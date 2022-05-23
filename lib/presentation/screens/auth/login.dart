@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_app/business%20logic/auth/sociallogin_cubit.dart';
 import 'package:social_app/presentation/screens/auth/register.dart';
 import 'package:social_app/presentation/screens/home/homescreen.dart';
+import 'package:social_app/presentation/screens/layout.dart';
 import 'package:social_app/presentation/widgets/defaultbutton.dart';
 import 'package:social_app/presentation/widgets/textForm.dart';
 
@@ -41,7 +42,9 @@ class _LoginScreenState extends State<LoginScreen> {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: ((context) => const HomeScreen()),
+                  builder: ((context) => const SocialLayout(
+                        index: 0,
+                      )),
                 ),
               );
             }
