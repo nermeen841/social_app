@@ -14,3 +14,35 @@ class GetUserErrorState extends UserState {
 
   GetUserErrorState(this.error);
 }
+
+class UpdateUserLoadingState extends UserState {}
+
+class UpdateUserErrorState extends UserState {
+  final String error;
+
+  UpdateUserErrorState(this.error);
+}
+
+class UpdateProfileImageSuccessState extends UserState {}
+
+class UpdateProfileImageErrorState extends UserState {
+  final String error;
+
+  UpdateProfileImageErrorState(this.error);
+}
+
+class UpdateCoverImageSuccessState extends UserState {}
+
+class UpdateCoverImageErrorState extends UserState {
+  final String error;
+
+  UpdateCoverImageErrorState(this.error);
+}
+
+class UploadProfileImageErrorState extends UserState {}
+
+class UploadProfileImageSuccessState extends UserState {}
+
+class UploadCoverImageSuccessState extends UserState {}
+
+class UploadCoverImageErrorState extends UserState {}

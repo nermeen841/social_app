@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_app/business%20logic/user/user_cubit.dart';
 import 'package:social_app/presentation/screens/auth/login.dart';
+import 'package:social_app/presentation/screens/setting/updateprofile.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -119,7 +120,7 @@ class _SettingScreenState extends State<SettingScreen> {
                             height: h * 0.01,
                           ),
                           Text(
-                            "Share",
+                            "Followers",
                             style: Theme.of(context).textTheme.caption,
                           ),
                         ],
@@ -134,7 +135,7 @@ class _SettingScreenState extends State<SettingScreen> {
                             height: h * 0.01,
                           ),
                           Text(
-                            "followers",
+                            "followering",
                             style: Theme.of(context).textTheme.caption,
                           ),
                         ],
@@ -154,15 +155,21 @@ class _SettingScreenState extends State<SettingScreen> {
                         width: w * 0.3,
                         child: OutlinedButton(
                           onPressed: () {},
-                          child: const Text("update photo"),
+                          child: const Text("Add photo"),
                         ),
                       ),
                       SizedBox(
                         height: h * 0.06,
                         width: w * 0.3,
                         child: OutlinedButton(
-                          onPressed: () {},
-                          child: const Text("update cover"),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const UpdateProfile()));
+                          },
+                          child: const Text("Edit profile"),
                         ),
                       ),
                       SizedBox(

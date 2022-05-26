@@ -44,3 +44,25 @@ buildTextForm(
     ),
   );
 }
+
+//////////////////////////////////////////////////////////////////////
+
+cutomeAppBar(
+    {required VoidCallback press, required String title, required double w}) {
+  return AppBar(
+    backgroundColor: Colors.white,
+    elevation: 0.0,
+    automaticallyImplyLeading: false,
+    title: Text(
+      title,
+      style: TextStyle(
+          fontSize: w * 0.05, fontWeight: FontWeight.bold, color: Colors.black),
+    ),
+    leading: InkWell(
+        child: const Icon(
+          Icons.arrow_back_ios,
+          color: Colors.black,
+        ),
+        onTap: press),
+  );
+}
