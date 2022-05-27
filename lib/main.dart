@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:social_app/business%20logic/posts/postcubit_cubit.dart';
 import 'package:social_app/business%20logic/user/user_cubit.dart';
 import 'package:social_app/presentation/screens/auth/login.dart';
 import 'package:social_app/presentation/screens/layout.dart';
@@ -37,6 +38,9 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider<UserCubit>(
               create: (context) => UserCubit()..getUserData()),
+          BlocProvider<PostcubitCubit>(
+            create: (context) => PostcubitCubit()..getAllPosts(),
+          ),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

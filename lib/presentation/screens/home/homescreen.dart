@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:social_app/business%20logic/posts/postcubit_cubit.dart';
 import 'package:social_app/presentation/widgets/postcard.dart';
 import '../../../business logic/user/user_cubit.dart';
 import '../../widgets/home.dart';
@@ -62,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: double.infinity,
                   child: Card(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
-                    elevation: 10.0,
+                    elevation: 5.0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(w * .02),
                     ),
@@ -90,11 +91,26 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 10,
-                  itemBuilder: (context, index) => const PostCardItem(),
+                BlocConsumer<PostcubitCubit, PostcubitState>(
+                  listener: (context, state) {},
+                  builder: (context, state) {
+                    return ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: PostcubitCubit.get(context).posts.length,
+                      itemBuilder: (context, index) => PostCardItem(
+                        content: PostcubitCubit.get(context).posts[index].text!,
+                        dateTime:
+                            PostcubitCubit.get(context).posts[index].dateTime!,
+                        name: PostcubitCubit.get(context).posts[index].name!,
+                        userImage:
+                            PostcubitCubit.get(context).posts[index].image!,
+                        postImage:
+                            PostcubitCubit.get(context).posts[index].postImage!,
+                        myImage: UserCubit.get(context).userModel!.image!,
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

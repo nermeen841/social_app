@@ -48,11 +48,15 @@ buildTextForm(
 //////////////////////////////////////////////////////////////////////
 
 cutomeAppBar(
-    {required VoidCallback press, required String title, required double w}) {
+    {required VoidCallback press,
+    required String title,
+    required double w,
+    List<Widget>? actions}) {
   return AppBar(
     backgroundColor: Colors.white,
     elevation: 0.0,
     automaticallyImplyLeading: false,
+    actions: actions,
     title: Text(
       title,
       style: TextStyle(
@@ -64,5 +68,25 @@ cutomeAppBar(
           color: Colors.black,
         ),
         onTap: press),
+  );
+}
+//////////////////////////////////////////////////////////////////
+
+addPostTextForm(
+    {required String hint, required TextEditingController controller}) {
+  return TextFormField(
+    minLines: 1,
+    maxLines: 10,
+    keyboardType: TextInputType.text,
+    controller: controller,
+    decoration: InputDecoration(
+        hintText: hint,
+        hintStyle: const TextStyle(
+            color: Colors.grey, fontWeight: FontWeight.w400, fontSize: 16),
+        border: InputBorder.none,
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        focusedBorder: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        errorBorder: InputBorder.none),
   );
 }

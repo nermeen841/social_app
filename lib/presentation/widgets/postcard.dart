@@ -2,7 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PostCardItem extends StatelessWidget {
-  const PostCardItem({Key? key}) : super(key: key);
+  final String content;
+  final String postImage;
+  final String myImage;
+  final String userImage;
+  final String name;
+  final String dateTime;
+
+  const PostCardItem(
+      {Key? key,
+      required this.content,
+      required this.postImage,
+      required this.userImage,
+      required this.name,
+      required this.myImage,
+      required this.dateTime})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +40,7 @@ class PostCardItem extends StatelessWidget {
                 CircleAvatar(
                   radius: w * 0.07,
                   backgroundColor: Colors.white,
-                  backgroundImage: const NetworkImage(
-                      "https://img.freepik.com/free-photo/close-up-distracted-guy-with-glasses_1149-895.jpg?t=st=1653314444~exp=1653315044~hmac=d4efde9c39d55b350bf751c05ba2dac0149e4d79f80571c44310d2a985364e01&w=360"),
+                  backgroundImage: NetworkImage(userImage),
                 ),
                 SizedBox(
                   width: w * 0.01,
@@ -39,7 +53,7 @@ class PostCardItem extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "Nermeen Ramadan",
+                          name,
                           style: Theme.of(context)
                               .textTheme
                               .subtitle2!
@@ -56,7 +70,7 @@ class PostCardItem extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      "january 21 , 2021 at 11 p.m",
+                      dateTime,
                       style: Theme.of(context)
                           .textTheme
                           .caption!
@@ -88,7 +102,7 @@ class PostCardItem extends StatelessWidget {
               height: h * 0.01,
             ),
             Text(
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
+              content,
               maxLines: 5,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context)
@@ -141,18 +155,19 @@ class PostCardItem extends StatelessWidget {
                 ),
               ],
             ),
-            Card(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              elevation: 0.0,
-              margin: EdgeInsets.zero,
-              child: Image(
-                image: const NetworkImage(
-                    "https://img.freepik.com/free-psd/photo-frame-set-mockup-with-doodle-ornament_17005-1307.jpg?t=st=1653313699~exp=1653314299~hmac=534b79454ccd1ce63e38d32f7a0ef375d737f02f6907cee3b87e620007a52abb&w=360"),
-                fit: BoxFit.cover,
-                height: h * 0.2,
-                width: double.infinity,
-              ),
-            ),
+            (postImage != "")
+                ? Card(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    elevation: 0.0,
+                    margin: EdgeInsets.zero,
+                    child: Image(
+                      image: NetworkImage(postImage),
+                      fit: BoxFit.cover,
+                      height: h * 0.2,
+                      width: double.infinity,
+                    ),
+                  )
+                : const SizedBox(),
             SizedBox(
               height: h * 0.015,
             ),
@@ -219,8 +234,7 @@ class PostCardItem extends StatelessWidget {
                 CircleAvatar(
                   radius: w * 0.05,
                   backgroundColor: Colors.white,
-                  backgroundImage: const NetworkImage(
-                      "https://img.freepik.com/free-photo/close-up-distracted-guy-with-glasses_1149-895.jpg?t=st=1653314444~exp=1653315044~hmac=d4efde9c39d55b350bf751c05ba2dac0149e4d79f80571c44310d2a985364e01&w=360"),
+                  backgroundImage: NetworkImage(myImage),
                 ),
                 SizedBox(
                   width: w * 0.01,
